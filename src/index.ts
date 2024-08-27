@@ -13,7 +13,7 @@ bot.on('video', async (msg) => {
     if (video) {
         const file_id = video.file_id;
         bot.sendMessage(msg.chat.id, `${file_id}`);
-        bot.sendVideo('-1002204867702', `${file_id}`);
+        //bot.sendVideo('-1002204867702', `${file_id}`);
     } else {
         bot.sendMessage(msg.chat.id, 'Пожалуйста, отправьте видеофайл.');
     }

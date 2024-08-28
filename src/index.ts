@@ -2,13 +2,11 @@ import TelegramBot from 'node-telegram-bot-api';
 import {BOT_TOKEN, CHANEL_ID} from "../config";
 import ffmpeg from 'fluent-ffmpeg';
 import fs from 'fs';
-import { promisify } from 'util';
 import path from 'path';
 
 //process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 const token = BOT_TOKEN;
-const channelId = CHANEL_ID;
 const bot = new TelegramBot(token, { polling: true });
 
 bot.on('channel_post', async (msg) => {
@@ -34,7 +32,7 @@ bot.on('channel_post', async (msg) => {
                 if (!hasH264) {
                     await convertVideoToH264(inputFilePath, outputFilePath);
 
-                    await bot.sendMessage(channelId, `Видео сконвертировано, перешлите его в этот канал для получения id\n⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️`);
+                    await bot.sendMessage(chatId, `Видео сконвертировано, перешлите его в этот канал для получения id\n⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️`);
                     await bot.sendVideo(chatId, outputFilePath);
 
                     // Удаляем временные файлы
@@ -42,7 +40,7 @@ bot.on('channel_post', async (msg) => {
                     fs.unlinkSync(outputFilePath);
                 } else {
                     const videoFileId = msg.video.file_id;
-                    bot.sendMessage(channelId, `${videoFileId}`);
+                    bot.sendMessage(chatId, `${videoFileId}`);
                     
                     // Удаляем временные файлы
                     fs.unlinkSync(inputFilePath);

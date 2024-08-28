@@ -7,3 +7,4 @@ dotenv.config();
 export const srcPath = path.resolve(__dirname.split('/src/').slice(0, -2).join('/src/'), 'src')
 export const EXAMPLE = process.env.EXAMPLE;
 export const BOT_TOKEN = process.env.BOT_TOKEN;
+export const CHANEL_ID = Number(process.env.CHANEL_ID);

@@ -5,7 +5,7 @@ import fs from 'fs';
 import { promisify } from 'util';
 import path from 'path';
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+//process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 const token = BOT_TOKEN;
 const channelId = CHANEL_ID;

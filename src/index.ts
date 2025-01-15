@@ -23,4 +23,16 @@ bot.on('channel_post', async (msg) => {
             bot.sendMessage(chatId, 'Произошла ошибка при обработке видео.');
         }
     }
+
+    // Проверяем, есть ли в сообщении аудио
+    if (msg.audio) {
+        try {
+            const audioFileId = msg.audio.file_id;
+            bot.sendMessage(chatId, `${audioFileId}`);
+
+        } catch (error) {
+            console.error('Ошибка обработки видео:', error);
+            bot.sendMessage(chatId, 'Произошла ошибка при обработке видео.');
+        }
+    }
 });
